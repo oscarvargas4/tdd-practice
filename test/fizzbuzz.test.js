@@ -1,14 +1,5 @@
 import { describe, expect, it } from 'vitest'
-
-const fizzbuzz = (number) => {
-  if (typeof number !== 'number') throw new Error('Parameter should be a number')
-  if (Number.isNaN(number)) throw new Error('Parameter should be a number')
-
-  if (number % 3 === 0 && number % 5 === 0) return 'fizzbuzz'
-  if (number % 3 === 0) return 'fizz'
-  if (number % 5 === 0) return 'buzz'
-  return number
-}
+import fizzbuzz from '../src/fizzbuzz'
 
 describe('fizzbuzz', () => {
   it('should throw error if not number provided as parameter', () => {
