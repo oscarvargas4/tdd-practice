@@ -1,13 +1,5 @@
 import { describe, it, expect } from 'vitest'
-
-const canReconfigure = (from, to) => {
-  if (typeof from !== 'string') throw new Error('From parameter is not a string')
-  if (typeof to !== 'string') throw new Error('To parameter is not a string')
-
-  if (from.length !== to.length) return false
-
-  return true
-}
+import { canReconfigure } from '../src/canReconfigure'
 
 describe('canreconfigure', () => {
   it('should be a function', () => {
@@ -32,5 +24,17 @@ describe('canreconfigure', () => {
 
   it('should return false if strings provided have different lenght', () => {
     expect(canReconfigure('abc', 'ab')).toBe(false)
+  })
+
+  it('should return false if strings provided have different lenght even with same unique letters', () => {
+    expect(canReconfigure('aab', 'ab')).toBe(false)
+  })
+
+  it('should return false if strings provided have different number of unique letter', () => {
+    expect(canReconfigure('abc', 'ddd')).toBe(false)
+  })
+
+  it('should return false if strings has different order of transformation', () => {
+    expect(canReconfigure('XBOX', 'XXBO')).toBe(false)
   })
 })
