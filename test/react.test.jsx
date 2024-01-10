@@ -1,6 +1,7 @@
 import { afterEach, describe, it, expect } from 'vitest'
 import { render, screen, cleanup, fireEvent } from '@testing-library/react'
 import { useState } from 'react'
+import { evaluate } from 'mathjs'
 
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 const rows = [
@@ -15,7 +16,7 @@ const equalSign = '='
 const Calculator = () => {
   const [value, setValue] = useState('')
   const createClickHandler = op => () => setValue(value.concat(op))
-  const equalHandler = () => setValue(eval(value));
+  const equalHandler = () => setValue(evaluate(value))
 
   return (
     <section>
